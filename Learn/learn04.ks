@@ -16,9 +16,11 @@ SET pidRollErr TO 0.
 SET pidRollErrPrev TO 0.
 SET pidRollIPrev TO 0.
 
-SET KP_BASE TO 0.01.
-SET KI_BASE TO 0.0001.
-SET KD_BASE TO 0.002.
+RUN LibPidTerm1(0.001, UPDATE_RATE, "NoOvershoot").
+
+SET KP_BASE TO libpidterm1_Kp.
+SET KI_BASE TO libpidterm1_Ki.
+SET KD_BASE TO libpidterm1_Kd.
 
 SET KP_PITCH TO KP_BASE.
 SET KI_PITCH TO KI_BASE.
