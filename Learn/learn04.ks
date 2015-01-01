@@ -16,7 +16,7 @@ SET pidRollErr TO 0.
 SET pidRollErrPrev TO 0.
 SET pidRollIPrev TO 0.
 
-RUN LibPidTerm1(0.001, UPDATE_RATE, "NoOvershoot").
+RUN LibPidTerm1(0.05, 0.01, UPDATE_RATE, "NoOvershoot").
 
 SET KP_BASE TO libpidterm1_Kp.
 SET KI_BASE TO libpidterm1_Ki.
@@ -38,6 +38,7 @@ SET I_LIMIT_MAX TO 100.
 SET I_LIMIT_MIN TO -100.
 
 SET accentDirectionFromUp TO R(0,20,0).
+
 
 PRINT "All Set". 
 CLEARSCREEN.
@@ -74,6 +75,8 @@ UNTIL exit {
             SET ctrlErr TO ctrlErr + R(0,0,360).
         }
     }
+    
+    //Something is up with the calculation above and I get an error spike when crossing some boundary.
     
     PRINT "Accent Error: " + ctrlErr AT (0,0).
     
