@@ -19,9 +19,9 @@ DECLARE PARAMETER libpid1_KD.
 // Calculation of the P term
 SET libpid1_P TO  libpid1_KP * libpid1_err.
 // Calculation of the I term using Trapezoid for integration of area
-SET libpid1_I TO (libpid1_KI * ( ((libpid1_err + libpid1_errPrev) / 2) * libpid1_updateRate )) + libpid1_IPrev.
+SET libpid1_I TO (libpid1_KI * ( ((libpid1_err + libpid1_errPrev) / 2) * libpid1_dt )) + libpid1_IPrev.
 // Calculation D calculation
-SET libpid1_D TO  libpid1_KD * ((libpid1_err - libpid1_errPrev) / libpid1_updateRate).
+SET libpid1_D TO  libpid1_KD * ((libpid1_err - libpid1_errPrev) / libpid1_dt).
 
 // Output from this PID
 SET libpid1_PidOut TO libpid1_P + libpid1_I + libpid1_D.
