@@ -39,6 +39,7 @@ SET accentDirectionFromUp TO R(0,20,0).
 
 PRINT "All Set". 
 CLEARSCREEN.
+RUN LibShipVec1(1).
 
 UNTIL exit {
     SET ctrlErr TO (UP - SHIP:FACING) - accentDirectionFromUp.
@@ -126,7 +127,7 @@ UNTIL exit {
     SET SHIP:CONTROL:PITCH TO -1 * shipCtl:X.
     
     //Draw useful vectors, takes up lots of time
-    RUN LibShipVec1.
+    RUN LibShipVec1(0).
     
     WAIT UPDATE_RATE.
 }
